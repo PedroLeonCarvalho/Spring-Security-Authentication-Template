@@ -1,0 +1,13 @@
+package com.barbearia_ibertioga.barbearia_api;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class BarbeariaIbertiogaApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(BarbeariaIbertiogaApplication.class, args);
+	}
+
+}
