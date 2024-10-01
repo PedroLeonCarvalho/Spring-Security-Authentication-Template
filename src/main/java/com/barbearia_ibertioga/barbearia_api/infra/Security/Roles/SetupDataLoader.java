@@ -53,9 +53,9 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 
         Role adminRole = roleRepository.findByName("ROLE_ADMIN");
         User user = new User();
-        user.setName("User Name John");
-        user.setEmail("usernamejohn@email.com");
-        user.setPassword(passwordEncoder.encode("barbearia"));
+        user.setName("Usuário");
+        user.setEmail("usuario@email.com");
+        user.setPassword(passwordEncoder.encode("senha"));
         user.setRoles(Arrays.asList(adminRole));
         user.setEnabled(true);
         userRepository.save(user);
@@ -86,4 +86,7 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
         }
         return role;
     }
+
+
+
     }

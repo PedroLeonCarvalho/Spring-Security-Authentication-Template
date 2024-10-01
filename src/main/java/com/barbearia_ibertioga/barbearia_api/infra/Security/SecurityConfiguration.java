@@ -19,7 +19,7 @@ public class SecurityConfiguration {
 
     private final SecurityFilter securityFilter;
 
-    public SecurityConfiguration(SecurityFilter securityFilter) {
+    public SecurityConfiguration (SecurityFilter securityFilter) {
         this.securityFilter = securityFilter;
     }
 
@@ -31,8 +31,6 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST, "/login").permitAll()
                         .requestMatchers(HttpMethod.GET, "/login**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/users").permitAll()
-
-
                         .anyRequest().authenticated()
                         .and()
                         .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class))
