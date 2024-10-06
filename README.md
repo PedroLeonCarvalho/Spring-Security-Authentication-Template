@@ -98,5 +98,14 @@ spring.datasource.password=mysql
     "password": "senha"
   }
 
+- **POST** : `http://localhost:8080/users`
+{
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "phoneNumber": "1234567890",
+  "password": "senha",
+  "birthDate": "1990-01-01"
+}
+
        
        
