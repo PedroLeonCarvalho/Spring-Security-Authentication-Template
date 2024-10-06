@@ -1,6 +1,10 @@
 # Spring Security Template
 
+
 Este projeto tem como objetivo fornecer um modelo (template) reutilizável de uma aplicação Spring Security com diversas configurações pré-configuradas. Ele pode ser facilmente adaptado para qualquer aplicação onde seja necessária autenticação de usuários com base em **Roles** (perfis de usuário), **JWT**, **BCrypt**, e integração com um banco de dados MySQL em contêiner Docker. O projeto também inclui exemplos de endpoints para login, cadastro de novos usuários e um usuário administrador já cadastrado.
+
+
+Video explicativo: https://youtu.be/Z61r-QFBSvE 
 
 ## Funcionalidades
 
@@ -44,6 +48,23 @@ Um usuário administrador já está cadastrado no banco de dados para facilitar 
 ### Login
 
 Endpoint para autenticação de usuários. Retorna um token JWT caso as credenciais estejam corretas.
+
+- **Corpo da Requisição**:
+  ```json
+  {
+    "email": "usuario@email.com",
+    "password": "senha"
+  }
+ 
+-**cadastrar novo usuário (POST : /users)**:
+   ```json
+  {
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "phoneNumber": "1234567890",
+  "password": "senha",
+  "birthDate": "1990-01-01"
+}
 
        
        
