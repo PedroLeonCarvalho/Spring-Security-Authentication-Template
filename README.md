@@ -49,22 +49,54 @@ Um usuário administrador já está cadastrado no banco de dados para facilitar 
 
 Endpoint para autenticação de usuários. Retorna um token JWT caso as credenciais estejam corretas.
 
-- **Corpo da Requisição**:
+
+## Como Rodar o Projeto Localmente
+
+### Pré-requisitos
+
+Para rodar o projeto localmente, você precisará ter os seguintes componentes instalados:
+
+- **Java 17** ou superior
+- **Maven**
+- **Docker**
+
+### Passo a Passo
+
+1. **Clone o Repositório**
+
+   Clone o projeto para o seu ambiente local utilizando o seguinte comando:
+
+   ```bash
+   git clone git@github.com:PedroLeonCarvalho/Spring-Security-Authentication-Template.git
+   cd Spring-Security-Authentication-Template
+
+   ### Baixe e Inicie um Container MySQL
+
+### Configuração do Projeto com MySQL
+
+O projeto está configurado para conectar-se ao MySQL container na porta padrão (`3306`), com o usuário `root`, senha `mysql`, e o banco de dados `barbearia_db`.
+
+Caso você precise alterar essas configurações, edite o arquivo `application.properties` conforme necessário:
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/barbearia_db
+spring.datasource.username=root
+spring.datasource.password=mysql
+
+
+### Endpoints da API
+
+#### 1. Login
+
+- **POST** : `http://localhost:8080/login`
+
+  Para realizar o login, envie uma requisição com as credenciais de email e senha no seguinte formato:
+
   ```json
   {
     "email": "usuario@email.com",
     "password": "senha"
   }
- 
--**cadastrar novo usuário (POST : /users)**:
-   ```json
-  {
-  "name": "John Doe",
-  "email": "johndoe@example.com",
-  "phoneNumber": "1234567890",
-  "password": "senha",
-  "birthDate": "1990-01-01"
-}
 
        
        
