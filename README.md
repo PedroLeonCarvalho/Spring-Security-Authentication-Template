@@ -4,7 +4,7 @@
 Este projeto tem como objetivo fornecer um modelo (template) reutilizável de uma aplicação Spring Security com diversas configurações pré-configuradas. Ele pode ser facilmente adaptado para qualquer aplicação onde seja necessária autenticação de usuários com base em **Roles** (perfis de usuário), **JWT**, **BCrypt**, e integração com um banco de dados MySQL em contêiner Docker. O projeto também inclui exemplos de endpoints para login, cadastro de novos usuários e um usuário administrador já cadastrado.
 
 
-Video explicativo: https://youtu.be/Z61r-QFBSvE 
+Video explicativo: https://www.youtube.com/watch?v=Z61r-QFBSvE
 
 ## Funcionalidades
 
