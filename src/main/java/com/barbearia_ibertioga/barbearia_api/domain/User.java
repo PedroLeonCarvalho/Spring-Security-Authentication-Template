@@ -10,13 +10,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @EqualsAndHashCode
 @Table(name = "users")
 public class User implements Serializable, UserDetails {
@@ -42,7 +42,7 @@ public class User implements Serializable, UserDetails {
     private boolean tokenExpired;
 
     //Beadulg Solution
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(
@@ -63,8 +63,12 @@ public class User implements Serializable, UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        return roles.stream()
+                .map(role -> new SimpleGrantedAuthority(role.getName())) // Converte para SimpleGrantedAuthority
+                .collect(Collectors.toList()); // Coleta como uma lista
     }
+
+
 
     @Override
     public boolean isAccountNonExpired() {

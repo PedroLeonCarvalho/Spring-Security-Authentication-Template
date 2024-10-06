@@ -14,7 +14,7 @@ import java.time.ZoneOffset;
 
 @Service
 public class TokenService {
-
+//lida com a geração e verificação de tokens JWT
     private final UserRepository userRepository;
 
     public TokenService(UserRepository userRepository) {
@@ -36,9 +36,6 @@ public class TokenService {
         }
 
 
-
-
-
     }
 
     public String getSubject(String tokenJWT) {
@@ -56,7 +53,7 @@ public class TokenService {
         try {
             Algorithm algorithm = Algorithm.HMAC256("123");
             return JWT.require(algorithm)
-                    .withIssuer("bankingApi")
+                    .withIssuer("babeariaApi")
                     .build()
                     .verify(tokenJWT)
                     .getSubject();

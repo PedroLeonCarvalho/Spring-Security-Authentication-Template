@@ -40,6 +40,7 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
         public void onApplicationEvent (ContextRefreshedEvent event){
 
         if (alreadySetup)
+
             return;
         Privilege readPrivilege
                 = createPrivilegeIfNotFound("READ_PRIVILEGE");

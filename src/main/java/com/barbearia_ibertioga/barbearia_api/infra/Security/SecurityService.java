@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SecurityService implements UserDetailsService {
+    //implementa a interface UserDetailsService.
+    // Essa classe carrega os detalhes do usuário com base no email
+    // para autenticação
 
     private final UserRepository repository;
 

@@ -1,5 +1,6 @@
 package com.barbearia_ibertioga.barbearia_api.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,11 +14,11 @@ import java.util.Collection;
 @Table(name ="privileges")
 public class Privilege {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY   )
     private Long id;
 
     private String name;
-
+    @JsonIgnore
     @ManyToMany(mappedBy ="privileges")
     private Collection<Role> roles;
 

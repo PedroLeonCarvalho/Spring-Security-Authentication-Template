@@ -24,9 +24,8 @@ public class RolesSecurityFilterChain {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeRequests(authorize -> authorize
                         .expressionHandler(setupRoleHierarchy.customWebSecurityExpressionHandler())
-                        .requestMatchers(HttpMethod.GET, "/roleHierarchy")
-                        .hasRole("STAFF")
-                        .anyRequest().authenticated()
+                        .requestMatchers(HttpMethod.GET, "/users/acaoRestrita")
+                        .hasRole("ADMIN")
                         .and()
                         .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class))
                 .build();

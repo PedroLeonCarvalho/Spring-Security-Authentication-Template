@@ -1,26 +1,43 @@
 package com.barbearia_ibertioga.barbearia_api.infra.Security;
 
+import com.barbearia_ibertioga.barbearia_api.infra.Security.Roles.MyUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import java.util.List;
+
 @Configuration
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableWebSecurity
 public class SecurityConfiguration {
 
-    private final SecurityFilter securityFilter;
 
-    public SecurityConfiguration (SecurityFilter securityFilter) {
+    private final SecurityFilter securityFilter;
+    private  final MyUserDetailsService myUserDetailsService;
+    private final PasswordEncoder passwordEncoder;
+
+
+
+    public SecurityConfiguration (SecurityFilter securityFilter, MyUserDetailsService myUserDetailsService, PasswordEncoder passwordEncoder) {
         this.securityFilter = securityFilter;
+        this.myUserDetailsService = myUserDetailsService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Bean
@@ -38,13 +55,15 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public AuthenticationManager manager(AuthenticationConfiguration configuration) throws Exception {
-        return configuration.getAuthenticationManager();
+    public AuthenticationManager authenticationManager(List<AuthenticationProvider> myAuthenticationProviders) {
+        return new ProviderManager(myAuthenticationProviders);
     }
-
     @Bean
-    public PasswordEncoder encoder() {
-        return new BCryptPasswordEncoder();
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(myUserDetailsService);
+        provider.setPasswordEncoder(passwordEncoder); // Use a mesma codificação do seu PasswordEncoder
+        return provider;
     }
 
 }

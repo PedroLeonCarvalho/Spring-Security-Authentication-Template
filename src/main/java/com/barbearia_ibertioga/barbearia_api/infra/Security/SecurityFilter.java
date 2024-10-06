@@ -14,6 +14,7 @@ import java.io.IOException;
 
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
+    //Autentica as requisições utilizando o token JWT
 
     private final TokenService tokenService;
     private final UserRepository userRepository;
