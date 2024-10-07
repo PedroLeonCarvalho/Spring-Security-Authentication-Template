@@ -8,11 +8,11 @@
 		<version>3.3.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.barbearia-ibertioga</groupId>
-	<artifactId>barbearia-api</artifactId>
+	<groupId>com.secured_template</groupId>
+	<artifactId>secured-template</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Barbearia Ibertioga</name>
-	<description>Demo project for Spring Boot</description>
+	<name>Spring Security Template</name>
+	<description>Demo project for Spring Security</description>
 	<url/>
 	<licenses>
 		<license/>
